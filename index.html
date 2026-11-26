@@ -110,6 +110,9 @@ body.light .pt-sel{background:#f3ecd6;border-color:#c0a968}
 body.light .pt-list li{border-bottom-color:#d9cba0}
 body.light .pt-list li.nx{background:#f0e6c8}
 body.light .pt-next{box-shadow:none}
+.home-next{display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap;margin:6px 0 2px;padding:8px 10px;border:1px solid var(--g3);border-radius:12px;color:var(--g2);font-size:17px;text-align:center}
+.home-next b{color:var(--g);font-size:18px}
+.home-next .hc{color:var(--g);font-family:Georgia,serif;font-size:22px;letter-spacing:1px;direction:ltr}
 .mode-btn{position:absolute;top:12px;left:12px;z-index:9999;width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;border:1px solid #5b4b24;border-radius:50%;background:#14110acc;color:var(--g);cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .mode-btn svg{width:24px;height:24px;display:block}
 /* الوضع النهاري */
@@ -144,6 +147,7 @@ body.light .mode-btn{background:#fdf8e7dd;border-color:#c0a968;color:var(--g)}
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="divider"><path d="M0 10H120M180 10H300" stroke="#d4af37" stroke-width=".8"/><g fill="none" stroke="#d4af37" stroke-width="1"><rect x="141" y="1" width="18" height="18" transform="rotate(45 150 10)"/><rect x="144" y="4" width="12" height="12"/></g><circle cx="126" cy="10" r="2" fill="#d4af37"/><circle cx="174" cy="10" r="2" fill="#d4af37"/></g></defs></svg>
 
   <div class="sec" id="secTasbih">
+  <div class="home-next" id="homeNext"><span>الْمُتَبَقِّي عَلَى</span><b id="hnName">…</b><span class="hc" id="hnCount">--:--:--</span></div>
   <h2>الْعَدَّادُ</h2>
   <div class="zikr" id="zikr" aria-live="polite"></div>
   <button type="button" class="circle" id="circle">
@@ -412,7 +416,7 @@ var PT=(function(){
     if(!nx){var t2=day(1);nx='fajr';nextAt=t2.fajr}
     list.innerHTML='';
     NAMES.forEach(function(n){var li=document.createElement('li');if(n[0]===nx)li.className='nx';li.innerHTML='<span>'+n[1]+'</span><b>'+fmt(t[n[0]])+'</b>';list.appendChild(li);if(n[0]===nx)nxName=n[1]});
-    document.getElementById('ptNextName').textContent=nxName;
+    document.getElementById('ptNextName').textContent=nxName;document.getElementById('hnName').textContent=nxName;
     var o={weekday:'long',day:'numeric',month:'long',year:'numeric'};if(loc.tz)o.timeZone=loc.tz;
     document.getElementById('ptDate').textContent=new Date().toLocaleDateString('ar-EG',o);
     document.getElementById('ptNote').textContent=(loc.geo?'حَسَبَ مَوْقِعِكَ · ':'')+'حِسَابٌ عَلَى جِهَازِكَ بِطَرِيقَةِ الْهَيْئَةِ الْمِصْرِيَّةِ الْعَامَّةِ لِلْمِسَاحَةِ (الْفَجْرُ ١٩٫٥° · الْعِشَاءُ ١٧٫٥°)، قَدْ يَخْتَلِفُ دَقِيقَةً عَنْ تَطْبِيقِكَ.';
@@ -420,7 +424,7 @@ var PT=(function(){
   }
   function tick(){var d=Math.max(0,Math.floor((nextAt-Date.now())/1000));if(d===0&&nextAt){render();return}
     var h=Math.floor(d/3600),m=Math.floor(d%3600/60),s=d%60;function z(n){return(n<10?'0':'')+n}
-    document.getElementById('ptCount').textContent=(h+':'+z(m)+':'+z(s)).replace(/\d/g,function(c){return'٠١٢٣٤٥٦٧٨٩'[c]})}
+    var tx=(h+':'+z(m)+':'+z(s)).replace(/\d/g,function(c){return'٠١٢٣٤٥٦٧٨٩'[c]});document.getElementById('ptCount').textContent=tx;document.getElementById('hnCount').textContent=tx}
   sel.onchange=function(){var c=CITIES[+sel.value];loc={lat:c[1],lng:c[2],tz:'Africa/Cairo',geo:false};try{localStorage.setItem(KEY,sel.value)}catch(e){}render()};
   var gb=document.getElementById('ptGeo');
   gb.onclick=function(){
