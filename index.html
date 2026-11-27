@@ -69,7 +69,7 @@ body[data-tab=masaa] .anote{color:#9fb0e0}
 body.light[data-tab=masaa] .dhikr{background:#eef0f8;border-color:#b9c2e0}
 body.light[data-tab=masaa] .dhikr .rem{border-color:#4a5a99;color:#33417a}
 body.light[data-tab=masaa] .anote{color:#4a5a99}
-.salat{text-align:center;margin:44px 0 14px;padding:10px 8px 6px;border-top:1px solid var(--g3);border-bottom:1px solid var(--g3)}
+.salat{text-align:center;margin:62px 0 14px;padding:10px 8px 6px;border-top:1px solid var(--g3);border-bottom:1px solid var(--g3)}
 .salat{position:relative}
 .salat-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;margin:6px auto 4px;border-radius:50%;border:1.5px solid var(--g);background:transparent;color:var(--g);cursor:pointer;padding:0;box-shadow:0 0 10px rgba(212,175,55,.25);-webkit-tap-highlight-color:transparent}
 .salat-btn svg{width:18px;height:18px;fill:currentColor}
@@ -81,6 +81,14 @@ body.light[data-tab=masaa] .anote{color:#4a5a99}
 body.light .salat b{text-shadow:none}
 .menu-btn{position:absolute;top:12px;right:12px;z-index:9999;width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;border:1px solid #5b4b24;border-radius:50%;background:#14110acc;color:var(--g);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .menu-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.clockbar{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:9998;display:flex;align-items:center;gap:8px;padding:5px 10px;border:1px solid #5b4b24;border-radius:14px;background:#14110acc;box-shadow:0 0 14px rgba(212,175,55,.16);max-width:calc(100vw - 132px)}
+.clockbar .ck-time{color:var(--g);font-size:clamp(15px,4.8vw,19px);font-weight:700;line-height:1.5;white-space:nowrap}
+.clockbar .ck-line{width:1px;align-self:stretch;margin:3px 0;background:linear-gradient(transparent,var(--g3) 30%,var(--g3) 70%,transparent);position:relative}
+.clockbar .ck-line::after{content:"";position:absolute;top:50%;left:50%;width:5px;height:5px;background:var(--g);transform:translate(-50%,-50%) rotate(45deg)}
+.clockbar .ck-dates{display:flex;flex-direction:column;justify-content:center;line-height:1.8;font-size:clamp(9px,2.9vw,11.5px);white-space:nowrap}
+.clockbar .ck-h{color:var(--g)}
+.clockbar .ck-g{color:var(--g3)}
+body.light .clockbar{background:#fdf8e7dd;border-color:#c0a968;box-shadow:0 2px 10px rgba(120,90,20,.18)}
 .menu-pop{position:absolute;top:62px;right:12px;z-index:10000;min-width:210px;background:#14110a;border:1px solid var(--g);border-radius:12px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.5);display:none}
 .menu-pop.open{display:block}
 .menu-pop button{display:block;width:100%;text-align:start;background:none;border:0;border-radius:8px;color:var(--g2);font:inherit;font-size:18px;padding:10px 12px;cursor:pointer}
@@ -197,8 +205,8 @@ body.light .dhikr:active{background:#f0e6c8}
 body.light .mode-btn{background:#fdf8e7dd;border-color:#c0a968;color:var(--g)}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="14-apple-touch-icon.png">
-<link rel="icon" type="image/png" href="11-icon-192.png">
+<link rel="apple-touch-icon" href="7-apple-touch-icon.png">
+<link rel="icon" type="image/png" href="4-icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -208,6 +216,7 @@ body.light .mode-btn{background:#fdf8e7dd;border-color:#c0a968;color:var(--g)}
 <button type="button" class="mode-btn" id="modeBtn" aria-label="الْوَضْعُ النَّهَارِيُّ"></button>
 <button type="button" class="menu-btn" id="menuBtn" aria-label="الْقَائِمَةُ" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 <div class="menu-pop" id="menuPop" role="menu"><button type="button" class="cur" data-sec="secTasbih" role="menuitem">التَّسْبِيحُ وَالْأَذْكَارُ</button><button type="button" data-sec="secDuas" role="menuitem">أَدْعِيَةٌ قُرْآنِيَّةٌ</button><button type="button" data-sec="secPrayer" role="menuitem">مَوَاعِيدُ الصَّلَاةِ</button><button type="button" data-sec="secAdhkar" role="menuitem">الْأَذْكَارُ الْإِسْلَامِيَّةُ</button><button type="button" data-sec="secQibla" role="menuitem">اتِّجَاهُ الْقِبْلَةِ</button><button type="button" data-sec="secWeb" role="menuitem" id="menuWeb" style="display:none"><span style="display:inline-flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2H4.5z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>التنبيهات</span></button></div>
+<div class="clockbar" id="clockbar" aria-label="السَّاعَةُ وَالتَّارِيخُ"><span class="ck-time" id="ckTime">--:--:--</span><span class="ck-line" aria-hidden="true"></span><span class="ck-dates"><span class="ck-h" id="ckHijri"></span><span class="ck-g" id="ckGreg"></span></span></div>
 <main>
   <div class="salat"><b>صَلُّوا عَلَى النَّبِيِّ ﷺ</b><span>اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ</span><button type="button" class="salat-btn" id="salatBtn" aria-label="تَشْغِيلُ الصَّوْتِ / إِيقَافُهُ"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button></div>
   <header class="band">
@@ -381,6 +390,26 @@ body.light .mode-btn{background:#fdf8e7dd;border-color:#c0a968;color:var(--g)}
   try{theme=localStorage.getItem(TKEY)||'dark';}catch(e){}
   applyTheme(theme);
   $('modeBtn').onclick=function(){theme=theme==='light'?'dark':'light';try{localStorage.setItem(TKEY,theme)}catch(e){}applyTheme(theme)};
+  ;(function(){
+    var tEl=document.getElementById('ckTime'),hEl=document.getElementById('ckHijri'),gEl=document.getElementById('ckGreg'),bar=document.getElementById('clockbar');
+    if(!tEl||!bar)return;
+    var tf=null,hf=null,gf=null;
+    try{tf=new Intl.DateTimeFormat('ar-EG',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false})}catch(e){}
+    try{hf=new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric'})}catch(e){}
+    try{gf=new Intl.DateTimeFormat('ar-EG',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}catch(e){}
+    if(!tf){bar.style.display='none';return}
+    var lastDay='';
+    function tick(){
+      var d=new Date();
+      tEl.textContent=tf.format(d);
+      var k=d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+      if(k!==lastDay){lastDay=k;
+        if(hf){try{hEl.textContent=hf.format(d)}catch(e){}}
+        if(gf){try{gEl.textContent=gf.format(d)+' م'}catch(e){}}
+      }
+    }
+    tick();setInterval(tick,1000);
+  })();
 
   /* أذكار الصباح والمساء */
   var AD={
@@ -950,6 +979,128 @@ var PT=(function(){
    "v": [
     "كَانَ النَّبِيُّ ﷺ يُعَوِّذُ بِهَا الْحَسَنَ وَالْحُسَيْنَ",
     "البخاري"
+   ]
+  }
+ ]
+},
+{
+ "name": "دُعَاءُ السَّفَرِ",
+ "items": [
+  {
+   "t": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى وَمِنَ الْعَمَلِ مَا تَرْضَى اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ وَالْخَلِيفَةُ فِي الأَهْلِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ وَكَآبَةِ الْمَنْظَرِ وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالأَهْلِ",
+   "g": 1,
+   "v": [
+    "كَانَ ﷺ إِذَا رَكِبَ لِلسَّفَرِ كَبَّرَ ثَلَاثًا ثُمَّ قَالَ:",
+    "رواه مسلم"
+   ]
+  },
+  {
+   "t": "آيِبُونَ تَائِبُونَ عَابِدُونَ لِرَبِّنَا حَامِدُونَ",
+   "g": 1,
+   "v": [
+    "وَإِذَا رَجَعَ قَالَهُنَّ وَزَادَ:",
+    "رواه مسلم"
+   ]
+  },
+  {
+   "t": "كُنَّا إِذَا صَعِدْنَا كَبَّرْنَا، وَإِذَا نَزَلْنَا سَبَّحْنَا",
+   "g": 1,
+   "v": [
+    "جَابِرُ بْنُ عَبْدِ اللَّهِ رضي الله عنهما:",
+    "رواه البخاري"
+   ]
+  },
+  {
+   "t": "أَسْتَوْدِعُ اللَّهَ دِينَكُمْ وَأَمَانَتَكُمْ وَخَوَاتِيمَ أَعْمَالِكُمْ",
+   "g": 1,
+   "v": [
+    "كَانَ ﷺ إِذَا أَرَادَ أَنْ يُوَدِّعَ الْجَيْشَ قَالَ:",
+    "رواه أبو داود"
+   ]
+  }
+ ]
+},
+{
+ "name": "أَدْعِيَةٌ مَأْثُورَةٌ",
+ "items": [
+  {
+   "t": "اللَّهُمَّ رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً، وَفِي الآخِرَةِ حَسَنَةً، وَقِنَا عَذَابَ النَّارِ",
+   "g": 1,
+   "v": [
+    "كَانَ أَكْثَرَ دُعَاءِ النَّبِيِّ ﷺ:",
+    "رواه البخاري"
+   ]
+  },
+  {
+   "t": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْجُبْنِ وَالْبُخْلِ، وَضَلَعِ الدَّيْنِ، وَغَلَبَةِ الرِّجَالِ",
+   "g": 1,
+   "v": [
+    "",
+    "رواه البخاري"
+   ]
+  },
+  {
+   "t": "اللَّهُمَّ أَصْلِحْ لِي دِينِيَ الَّذِي هُوَ عِصْمَةُ أَمْرِي وَأَصْلِحْ لِي دُنْيَاىَ الَّتِي فِيهَا مَعَاشِي وَأَصْلِحْ لِي آخِرَتِي الَّتِي فِيهَا مَعَادِي وَاجْعَلِ الْحَيَاةَ زِيَادَةً لِي فِي كُلِّ خَيْرٍ وَاجْعَلِ الْمَوْتَ رَاحَةً لِي مِنْ كُلِّ شَرٍّ",
+   "g": 1,
+   "v": [
+    "",
+    "رواه مسلم"
+   ]
+  },
+  {
+   "t": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى",
+   "g": 1,
+   "v": [
+    "",
+    "رواه مسلم"
+   ]
+  },
+  {
+   "t": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ زَوَالِ نِعْمَتِكَ وَتَحَوُّلِ عَافِيَتِكَ وَفُجَاءَةِ نِقْمَتِكَ وَجَمِيعِ سَخَطِكَ",
+   "g": 1,
+   "v": [
+    "",
+    "رواه مسلم"
+   ]
+  },
+  {
+   "t": "اللَّهُمَّ اغْفِرْ لِي خَطِيئَتِي وَجَهْلِي وَإِسْرَافِي فِي أَمْرِي، وَمَا أَنْتَ أَعْلَمُ بِهِ مِنِّي، اللَّهُمَّ اغْفِرْ لِي هَزْلِي وَجِدِّي وَخَطَاىَ وَعَمْدِي، وَكُلُّ ذَلِكَ عِنْدِي",
+   "g": 1,
+   "v": [
+    "",
+    "رواه البخاري"
+   ]
+  },
+  {
+   "t": "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+   "g": 1,
+   "v": [
+    "قَالَ ﷺ لِمُعَاذٍ: لَا تَدَعَنَّ فِي دُبُرِ كُلِّ صَلَاةٍ أَنْ تَقُولَ:",
+    "رواه أبو داود"
+   ]
+  },
+  {
+   "t": "﴿ رَبَّنَآ ءَاتِنَا فِى ٱلدُّنْيَا حَسَنَةًۭ وَفِى ٱلْءَاخِرَةِ حَسَنَةًۭ وَقِنَا عَذَابَ ٱلنَّارِ ﴾",
+   "g": 1,
+   "v": [
+    "",
+    "سورة البقرة ٢٠١"
+   ]
+  },
+  {
+   "t": "﴿ رَّبِّ ٱرْحَمْهُمَا كَمَا رَبَّيَانِى صَغِيرًۭا ﴾",
+   "g": 1,
+   "v": [
+    "",
+    "سورة الإسراء ٢٤"
+   ]
+  },
+  {
+   "t": "﴿ رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ ﴾ ﴿ رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ ﴾",
+   "g": 1,
+   "v": [
+    "",
+    "سورة إبراهيم ٤٠-٤١"
    ]
   }
  ]
