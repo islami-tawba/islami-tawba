@@ -1898,12 +1898,12 @@ if(false){(function(){
 (function(){
  var T=document.getElementById('annT'),TM=document.getElementById('annTM');
  if(!T||!TM)return;
- var hideTimer=null,pending=null,KEY='islami-tawba.annSeen',AJ='https://islami-tawba.github.io/announcements.json';
+ var hideTimer=null,pending=null,currentId=null,KEY='islami-tawba.annSeen',AJ='https://islami-tawba.github.io/announcements.json';
  function seen(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
  function mark(id){try{var a=seen();if(a.indexOf(id)<0){a.push(id);localStorage.setItem(KEY,JSON.stringify(a.slice(-20)))}}catch(e){}}
- function hide(){T.classList.remove('on');T.setAttribute('aria-hidden','true');clearTimeout(hideTimer)}
+ function hide(){if(currentId){mark(currentId);currentId=null}T.classList.remove('on');T.setAttribute('aria-hidden','true');clearTimeout(hideTimer)}
  function show(a){
-  mark(a.id);
+  currentId=a.id;
   TM.innerHTML='<b>'+a.title+'</b><br>'+a.body;
   pending=function(){var q=document.querySelector('[data-sec="secLib"]');if(q){q.click()}else if(a.url){location.hash=a.url}};
   T.classList.add('on');T.setAttribute('aria-hidden','false');
