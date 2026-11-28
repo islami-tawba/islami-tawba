@@ -352,6 +352,8 @@ body.light .qframe{box-shadow:inset 0 0 0 3px var(--bg),inset 0 0 0 4.5px rgba(1
   <label style="display:flex;align-items:center;justify-content:space-between;padding:8px 0"><span>أذكار المساء (بعد العصر بنصف ساعة)</span><input type="checkbox" id="wE" style="width:22px;height:22px"></label>
   <p id="wWarn" style="display:none;color:#e0a96d;font-size:14px;margin:8px 0"></p>
   <div class="row" style="margin-top:8px"><button type="button" class="btn ghost" id="wTest">إشعار تجريبي</button></div>
+  <p style="margin:10px 0 0"><button type="button" class="btn ghost" id="pushBtn">تشغيل إشعارات الموقع</button></p>
+  <p id="pushMsg"></p>
   <p style="font-size:13px;opacity:.8;margin:10px 0 0">في الموقع تصلك التنبيهات فقط والموقع مفتوح في المتصفح (حتى لو في تبويب خلفي). لتنبيهات تعمل والمتصفح مغلق حمّل تطبيق الأندرويد. تستطيع كتم صلاة بعينها بالجرس بجانبها في مواعيد الصلاة. المواعيد تُحسب حسب مدينتك أو موقعك.</p>
   </div>
   </div>
@@ -371,6 +373,8 @@ body.light .qframe{box-shadow:inset 0 0 0 3px var(--bg),inset 0 0 0 4.5px rgba(1
   <div style="border:1px solid var(--g2,#c9a227);border-radius:14px;padding:14px;margin-top:14px">
   <span style="font-size:18px;font-weight:700">معلومات التطبيق</span>
   <p style="font-size:14px;margin:10px 0">نسخة التطبيق: <b>1.6.1</b> · نسخة المحتوى: <b>20</b></p>
+  <p style="font-size:14px;margin:0 0 10px;line-height:1.9">الإصدار 1.6.1 متاح الآن: المكتبة الإسلامية (كتب الحديث الستة وأولها صحيح البخاري)، وشريط إعلانات بآخر المستجدات، وشعار التطبيق في الإشعارات بدل الجرس، وطلب إذن الإشعارات عند أول فتح.</p>
+  <p style="font-size:13px;margin:0 0 10px;line-height:1.9;opacity:.9">الإصدار 1.6.1: يعمل بدون إنترنت، وفيه المكتبة الإسلامية (كتب الحديث الستة وأولها صحيح البخاري)، وشريط إعلانات بآخر المستجدات، وإشعارات بشعار التطبيق بدل الجرس مع طلب الإذن عند أول فتح، وشريط تنبيه أعلى الشاشة يظهر عند توفّر تحديث للمحتوى أو للتطبيق ويبقى 30 ثانية ثم يختفي والضغط عليه يبدأ التحديث فورًا مع فحص دوري كل 5 دقائق أثناء الاستخدام وعند العودة إلى الصفحة، وصفحة المصحف داخل إطار مزخرف (اسم السورة في شريط مزخرف، والآيات متصلة داخل إطار بزوايا مزخرفة، وعلامات نهاية الآيات مزخرفة)، وقسم «معلومات التطبيق» يعرض نسخة التطبيق والمحتوى وطريقة عمل التنبيهات، والأذان بثلاثة أصوات مع تخصيص الوضع والمؤذن لكل صلاة، وتنبيهات الصلاة والأذكار وزر تحديث المحتوى وتكبير الشاشة بإصبعين. التحديث يُثبَّت فوق النسخة القديمة. عند التثبيت سيظهر تحذير من أندرويد لأن التطبيق من خارج متجر Google Play. اسمح بالتثبيت من هذا المصدر لإكماله.</p>
   <h2 style="margin:12px 0 8px;font-size:16px">ما الجديد في الإصدار 1.6.1</h2>
     <ul style="font-size:14px;margin:0 0 4px;padding-inline-start:20px;line-height:1.9">
   <li>المكتبة الإسلامية: كتب الحديث الستة وأولها صحيح البخاري، وتعمل بلا إنترنت بعد أول تحميل.</li>
@@ -474,36 +478,9 @@ fetch('lib.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}
   </div>
   <ul class="qlist" id="aqList"></ul>
   </div>
-  <div style="max-width:640px;margin:14px auto 0;padding:12px 16px;border:1.5px solid var(--g,#c9a227);border-radius:14px;background:rgba(201,162,39,.1);text-align:center;color:var(--g,#c9a227);font-size:16px;line-height:1.9">الإصدار 1.6.1 متاح الآن: المكتبة الإسلامية (كتب الحديث الستة وأولها صحيح البخاري)، وشريط إعلانات بآخر المستجدات، وشعار التطبيق في الإشعارات بدل الجرس، وطلب إذن الإشعارات عند أول فتح.</div>
   <div class="dl-app" id="dlApp" style="text-align:center;margin:18px 0 6px">
   <a class="btn" href="https://islami-tawba.github.io/10-islami-tawba-1.6.1.apk" download data-goatcounter-click="android-download" data-goatcounter-title="تحميل للأندرويد" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--g2)">تحميل للأندرويد</a>
-  <p class="pt-note">الإصدار 1.6.1: يعمل بدون إنترنت، وفيه المكتبة الإسلامية (كتب الحديث الستة وأولها صحيح البخاري)، وشريط إعلانات بآخر المستجدات، وإشعارات بشعار التطبيق بدل الجرس مع طلب الإذن عند أول فتح، وشريط تنبيه أعلى الشاشة يظهر عند توفّر تحديث للمحتوى أو للتطبيق ويبقى 30 ثانية ثم يختفي والضغط عليه يبدأ التحديث فورًا مع فحص دوري كل 5 دقائق أثناء الاستخدام وعند العودة إلى الصفحة، وصفحة المصحف داخل إطار مزخرف (اسم السورة في شريط مزخرف، والآيات متصلة داخل إطار بزوايا مزخرفة، وعلامات نهاية الآيات مزخرفة)، وقسم «معلومات التطبيق» يعرض نسخة التطبيق والمحتوى وطريقة عمل التنبيهات، والأذان بثلاثة أصوات مع تخصيص الوضع والمؤذن لكل صلاة، وتنبيهات الصلاة والأذكار وزر تحديث المحتوى وتكبير الشاشة بإصبعين. التحديث يُثبَّت فوق النسخة القديمة. عند التثبيت سيظهر تحذير من أندرويد لأن التطبيق من خارج متجر Google Play. اسمح بالتثبيت من هذا المصدر لإكماله.</p>
-  <p style="margin:12px 0 0"><button type="button" class="btn ghost" id="pushBtn">تشغيل إشعارات الموقع</button></p>
-  <p id="pushMsg"></p>
   </div>
-  <style>details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}</style>
-  <details style="max-width:640px;margin:6px auto 18px;border:1px solid var(--g3,#b99a3f);border-radius:14px;padding:14px 16px;text-align:right">
-  <summary style="cursor:pointer;font-size:17px;font-weight:700;color:var(--g,#c9a227)">معلومات التطبيق ▾</summary>
-  <div style="margin-top:12px;font-size:14px;line-height:1.9">
-  <p style="margin:0 0 8px">الإصدار الحالي: <b>1.6.1</b> · نسخة المحتوى: <b>20</b></p>
-  <h3 style="margin:12px 0 6px;font-size:15px">ما الجديد في الإصدار 1.6.1</h3>
-  <ul style="margin:0 0 4px;padding-inline-start:20px;line-height:1.9">
-  <li>المكتبة الإسلامية: كتب الحديث الستة وأولها صحيح البخاري، وتعمل بلا إنترنت بعد أول تحميل.</li>
-  <li>شريط إعلانات يظهر أعلى الصفحة عند وجود جديد، ويختفي بعد إغلاقه.</li>
-  <li>شعار التطبيق في الإشعارات بدل الجرس: الأيقونة الصغيرة صارت الشعار، والأيقونة الكبيرة دائرية بالشعار، مع طلب إذن الإشعارات عند أول فتح.</li>
-  <li>تصميم المصحف نفسه الآن في الموقع والتطبيق: شريط مزخرف لاسم السورة، وإطار ذهبي بزوايا مزخرفة، والآيات متصلة بعلامات مزخرفة.</li>
-  </ul>
-  <h3 style="margin:12px 0 6px;font-size:15px">كيف تعمل التنبيهات والأذان</h3>
-  <ul style="margin:0;padding-inline-start:20px">
-  <li>مواعيد الصلاة تُحسب على الهاتف حسب مدينتك أو موقعك، وتعمل بدون إنترنت وبعد إعادة تشغيل الهاتف.</li>
-  <li>عند موعد كل صلاة مفعّلة يرفع الهاتف الأذان حسب الوضع المختار: أذان صوتي، أو اهتزاز فقط، أو صامت، حتى والشاشة مقفولة.</li>
-  <li>يمكن تخصيص الوضع والمؤذن لكل صلاة من رمز مكبّر الصوت بجانبها في «مواعيد الصلاة».</li>
-  <li>لا يوجد سيرفر: التنبيهات محلية على الهاتف، وفحص وجود إصدار جديد يحدث عند فتح التطبيق ثم مرة يوميًا، ولهذا يظهر إشعار الإصدار الجديد بعد فتح التطبيق.</li>
-  <li>بعض الهواتف توقف التنبيهات لتوفير البطارية: اسمح للتطبيق من «إعدادات البطارية»، وافتح التطبيق مرة كل شهر لتحديث المواعيد.</li>
-  </ul>
-  <p style="margin:12px 0 0;padding-top:10px;border-top:1px solid rgba(201,162,39,.25);opacity:.85;font-size:13px;text-align:center">الْمَالِكُ وَصَاحِبُ فِكْرَةِ التَّطْبِيقِ وَالْمَوْقِعِ: <bdi dir="ltr" style="unicode-bidi:isolate">MUKHTAR MUSTAFA</bdi></p>
-  </div>
-  </details>
   <p class="foot">تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ.</p>
   <p class="foot" style="font-size:12px;opacity:.8">فِكْرَةُ وَمِلْكِيَّةُ <bdi dir="ltr" style="unicode-bidi:isolate">MUKHTAR MUSTAFA</bdi></p>
 </main>
