@@ -277,7 +277,7 @@ body.light .qtext{box-shadow:inset 0 0 0 3px var(--bg),inset 0 0 0 4.5px rgba(18
 <body>
 <button type="button" class="mode-btn" id="modeBtn" aria-label="الْوَضْعُ النَّهَارِيُّ"></button>
 <button type="button" class="menu-btn" id="menuBtn" aria-label="الْقَائِمَةُ" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-<div class="menu-pop" id="menuPop" role="menu"><button type="button" data-sec="secQuran" role="menuitem">الْمُصْحَفُ الشَّرِيفُ</button><button type="button" data-sec="secAudio" role="menuitem">الْمُصْحَفُ صَوْتًا</button><button type="button" class="cur" data-sec="secTasbih" role="menuitem">التَّسْبِيحُ وَالْأَذْكَارُ</button><button type="button" data-sec="secDuas" role="menuitem">أَدْعِيَةٌ قُرْآنِيَّةٌ</button><button type="button" data-sec="secPrayer" role="menuitem">مَوَاعِيدُ الصَّلَاةِ</button><button type="button" data-sec="secAdhkar" role="menuitem">الْأَذْكَارُ الْإِسْلَامِيَّةُ</button><button type="button" data-sec="secQibla" role="menuitem">اتِّجَاهُ الْقِبْلَةِ</button><button type="button" data-sec="secWeb" role="menuitem" id="menuWeb" style="display:none"><span style="display:inline-flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2H4.5z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>التنبيهات</span></button></div>
+<div class="menu-pop" id="menuPop" role="menu"><button type="button" data-sec="secQuran" role="menuitem">الْمُصْحَفُ الشَّرِيفُ</button><button type="button" data-sec="secAudio" role="menuitem">الْمُصْحَفُ صَوْتًا</button><button type="button" class="cur" data-sec="secTasbih" role="menuitem">التَّسْبِيحُ وَالْأَذْكَارُ</button><button type="button" data-sec="secDuas" role="menuitem">أَدْعِيَةٌ قُرْآنِيَّةٌ</button><button type="button" data-sec="secPrayer" role="menuitem">مَوَاعِيدُ الصَّلَاةِ</button><button type="button" data-sec="secAdhkar" role="menuitem">الْأَذْكَارُ الْإِسْلَامِيَّةُ</button><button type="button" data-sec="secLib" role="menuitem"><span style="display:inline-flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M4 19V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 0 2 2h13"/></svg>المَكْتَبَةُ الإِسْلَامِيَّةُ</span></button><button type="button" data-sec="secQibla" role="menuitem">اتِّجَاهُ الْقِبْلَةِ</button><button type="button" data-sec="secWeb" role="menuitem" id="menuWeb" style="display:none"><span style="display:inline-flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2H4.5z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>التنبيهات</span></button></div>
 <div class="clockbar" id="clockbar" aria-label="السَّاعَةُ وَالتَّارِيخُ"><span class="ck-time" id="ckTime">--:--:--</span><span class="ck-line" aria-hidden="true"></span><span class="ck-dates"><span class="ck-h" id="ckHijri"></span><span class="ck-g" id="ckGreg"></span></span></div>
 <main>
   <div class="salat"><b>صَلُّوا عَلَى النَّبِيِّ ﷺ</b><span>اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ</span><button type="button" class="salat-btn" id="salatBtn" aria-label="تَشْغِيلُ الصَّوْتِ / إِيقَافُهُ"><svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button></div>
@@ -348,6 +348,34 @@ body.light .qtext{box-shadow:inset 0 0 0 3px var(--bg),inset 0 0 0 4.5px rgba(18
   <p style="font-size:13px;opacity:.8;margin:10px 0 0">في الموقع تصلك التنبيهات فقط والموقع مفتوح في المتصفح (حتى لو في تبويب خلفي). لتنبيهات تعمل والمتصفح مغلق حمّل تطبيق الأندرويد. تستطيع كتم صلاة بعينها بالجرس بجانبها في مواعيد الصلاة. المواعيد تُحسب حسب مدينتك أو موقعك.</p>
   </div>
   </div>
+<div class="sec" id="secLib" hidden>
+  <style>#secLib a.btn{color:inherit;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}</style>
+  <h2>الْمَكْتَبَةُ الْإِسْلَامِيَّةُ</h2>
+  <div id="libBox"><p class="pt-note">جَارِي تَحْمِيلُ قَوَائِمِ الْمَكْتَبَةِ…</p></div>
+  <p class="pt-note">بَعْدَ أَوَّلِ تَحْمِيلٍ لِلْكِتَابِ تَعْمَلُ قِرَاءَتُهُ دُونَ إِنْتَرْنِت.</p>
+  </div>
+<script>
+(function(){
+var LIB=[{"id":"hadith6","name":"📚 كُتُبُ الْحَدِيثِ السِّتَّةِ","items":[{"n":"صَحِيحُ الْبُخَارِيّ","f":"lib/1-bukhari.pdf","size":27276547}]}];
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function fmt(b){return b?(' · '+Math.round(b/1048576)+' م.ب'):''}
+function render(){
+  var box=document.getElementById('libBox'); if(!box) return;
+  box.innerHTML=LIB.map(function(l){
+    return '<div class="lib-list"><h3 style="margin:14px 0 6px;font-size:1.05em">'+esc(l.name)+'</h3>'+
+    l.items.map(function(it){
+      return '<div class="pt-row" style="align-items:center"><span style="flex:1">'+esc(it.n)+fmt(it.size)+'</span>'+
+      '<a class="btn" href="pdfjs/web/viewer.html?file='+encodeURIComponent('../../'+it.f)+'">قِرَاءَة</a>'+
+      '<a class="btn" href="https://islami-tawba.github.io/'+esc(it.f)+'" download>تَحْمِيل</a></div>';
+    }).join('')+'</div>';
+  }).join('');
+}
+render();
+fetch('lib.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){
+  if(j&&j.lists){LIB=j.lists;render();}
+}).catch(function(){});
+})();
+</script>
   <div class="sec" id="secQibla" hidden>
   <h2>اتِّجَاهُ الْقِبْلَةِ</h2>
   <div class="pt-row"><select class="pt-sel" id="qbCity" aria-label="الْمَدِينَةُ"></select><button type="button" class="btn" id="qbGeo">اسْتَخْدِمْ مَوْقِعِي</button></div>
@@ -404,7 +432,7 @@ body.light .qtext{box-shadow:inset 0 0 0 3px var(--bg),inset 0 0 0 4.5px rgba(18
   </div>
   <div style="max-width:640px;margin:14px auto 0;padding:12px 16px;border:1.5px solid var(--g,#c9a227);border-radius:14px;background:rgba(201,162,39,.1);text-align:center;color:var(--g,#c9a227);font-size:16px;line-height:1.9">الإصدار 1.5.5 متاح الآن: شريط تنبيه داخل الصفحة يظهر عند توفّر تحديث ويختفي بعد 30 ثانية، والضغط عليه يبدأ التحديث فورًا.</div>
   <div class="dl-app" id="dlApp" style="text-align:center;margin:18px 0 6px">
-  <a class="btn" href="https://islami-tawba.github.io/8-islami-tawba-1.5.5.apk" download data-goatcounter-click="android-download" data-goatcounter-title="تحميل للأندرويد" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--g2)">تحميل للأندرويد</a>
+  <a class="btn" href="https://islami-tawba.github.io/9-islami-tawba-1.6.0.apk" download data-goatcounter-click="android-download" data-goatcounter-title="تحميل للأندرويد" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--g2)">تحميل للأندرويد</a>
   <p class="pt-note">الإصدار 1.5.5: يعمل بدون إنترنت، وفيه شريط تنبيه أعلى الشاشة يظهر عند توفّر تحديث للمحتوى أو للتطبيق ويبقى 30 ثانية ثم يختفي، والضغط عليه يبدأ التحديث فورًا، مع فحص دوري للتحديثات كل 5 دقائق أثناء الاستخدام وعند العودة إلى الصفحة. وفيه صفحة المصحف داخل إطار مزخرف (اسم السورة في شريط مزخرف، والآيات متصلة داخل إطار بزوايا مزخرفة، وعلامات نهاية الآيات مزخرفة)، وقسم «معلومات التطبيق» يعرض نسخة التطبيق والمحتوى وطريقة عمل التنبيهات، والأذان بثلاثة أصوات مع تخصيص الوضع والمؤذن لكل صلاة، وتنبيهات الصلاة والأذكار وزر تحديث المحتوى وتكبير الشاشة بإصبعين. التحديث يُثبَّت فوق النسخة القديمة. عند التثبيت سيظهر تحذير من أندرويد لأن التطبيق من خارج متجر Google Play. اسمح بالتثبيت من هذا المصدر لإكماله.</p>
   <p style="margin:12px 0 0"><button type="button" class="btn ghost" id="pushBtn">تشغيل إشعارات الموقع</button></p>
   <p id="pushMsg"></p>
